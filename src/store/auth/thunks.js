@@ -1,7 +1,8 @@
 import { chekingCredencials, login, logout } from './authSlice'
 import { loginWithEmailPassword, logoutFirebase, registerWithEmailPassword, signInWithGoogle } from '../../firebase/provider'
+import { clearJournal } from '../journal/journalSlice'
 
-export const chekingAuthentication = (email, password) => {
+export const chekingAuthentication = () => {
     return async( dispatch ) => {
 
         dispatch( chekingCredencials() )
@@ -52,10 +53,13 @@ export const startLogout = () => {
         try {
             
             await logoutFirebase();
-    
+
+            dispatch(clearJournal())
             dispatch( logout() );
         } catch (error) {
-            console.log( error );
+            const typeError = `ERROR:${error} CODE:${error.code}`;
+            console.log( typeError );
         }
     }
-}
+};
+

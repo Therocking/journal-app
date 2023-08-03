@@ -28,11 +28,11 @@ reducers: {
     },
     chekingCredencials: (state) => {
         state.status = 'checking'
-        state.uid = null;
-        state.email = null;
-        state.displayName = null;
-        state.photoURL = null;
-        state.errorMessage = null;
+        // state.uid = null;
+        // state.email = null;
+        // state.displayName = null;
+        // state.photoURL = null;
+        // state.errorMessage = null;
     },
 },
 });

@@ -41,6 +41,8 @@ export const LoginPage = () => {
     if( email.length === 0 || password.length < 0 ) return
 
     dispatch( startLoginWithEmailPassword(formState) )
+
+    
   }
 
   const onGoogleSignIn = () => {

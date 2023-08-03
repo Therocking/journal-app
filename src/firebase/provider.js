@@ -1,5 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from './config';
+import { TYPE_ERRORS } from '../errors';
 // import { DIC_ERRORS } from '../errors/errors';
 
 const googleProvider = new GoogleAuthProvider();
@@ -22,11 +23,10 @@ export const signInWithGoogle = async() => {
         }
 
     } catch (error) {
-        const errorMessage = error.message
 
         return {
             ok: false,
-            errorMessage
+            errorMessage: TYPE_ERRORS(error)
         };
     };
 };
@@ -49,7 +49,7 @@ export const registerWithEmailPassword = async({email, password, displayName}) =
         
         return {
             ok: false,
-            errorMessage: error.message //error del correo
+            errorMessage: TYPE_ERRORS(error) //error del correo
         };
     };
 };
@@ -68,11 +68,10 @@ export const loginWithEmailPassword = async({email, password}) => {
     } catch (error) {
         // console.log(error.code);
 
-        // if(error.code === 'auth/wrong-password')
-        // return {
-        //     ok: false,
-        //     errorMessage: error.message,
-        // };
+        return {
+            ok: false,
+            errorMessage: TYPE_ERRORS(error),
+        };
     }
 }
 

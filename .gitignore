@@ -1,3 +1,7 @@
+#inv
+.env
+
+
 # Logs
 logs
 *.log
